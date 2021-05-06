@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset = "utf-8">
+    <meta http-equiv="X-UA-Compatible" content = "IE=edge">
+    <meta name="viewport" content = "width=device-width,initial-scale=1">
+    <title> Car Price Predictor </title>
+</head>
+
+<body>
+    <div class="input-box">
+        <h2><u>Car Price Predictor</u></h2>
+        <form action="{{ url_for('predict')}}" method="post">
+            <p>Purchase Year  
+            &nbsp;<input id="first" name="Year" type="number " required="required"></p>
+            <p>Current Ex-Showroom Price (In lakhs)
+            &nbsp;<input id="second" name="Present_Price" required="required"></p>
+            <p>Kilometers Driven &nbsp;<input id="third" name="Kms_Driven" required="required"></p>
+            <p>No. of previous owners
+            &nbsp;<select id="fourth" name="Owner" required="required">
+                <option value=0>0</option>
+                <option value=1>1</option>
+                <option value=3>3</option>
+            </select></p>
+            <p>Fuel type
+            &nbsp;<select name="Fuel_Type_Petrol" id="fuel" required="required">
+                <option value="Petrol">Petrol</option>
+                <option value="Diesel">Diesel</option>
+                <option value="Diesel">CNG</option>
+            </select></p>
+            <p>Dealer or Individual
+            &nbsp;<select name="Seller_Type_Individual" id="resea" required="required">
+                <option value="Dealer">Dealer</option>
+                <option value="Individual">Individual</option>
+            </select></p>
+            <p>Transmission type
+            &nbsp;<select name="Transmission_Mannual" id="research" required="required">
+                <option value="Mannual">Manual Car</option>
+                <option value="Automatic">Automatic Car</option>
+            </select></p>
+            <button id="sub" type="submit ">Calculate the Selling Price</button>
+
+        </form>
+        <h3>{{ prediction_text }}<h3>
+    </div>
+
+</body>
+
+</html>
+
+
+    <style>
+        body {
+            margin: 0;
+            background: url(static/background_img.png);
+            background-repeat: no-repeat;
+            background-size: auto;
+            background-color: lightslategray;
+            text-align: center;
+            padding: 0px;
+            font-family: sans-serif;
+        }
+
+        .input-box{
+        width: 420px;
+        height: 450px;
+        background: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%,-50%);
+        box-sizing: border-box;
+        padding: 20px 30px;
+        }
+        
+        .input-box p{
+        font-weight: bold;
+        }
+
+        #research {
+            font-size: 18px;
+            width: 100px;
+            height: 23px;
+            top: 23px;
+        }
+        
+        
+        #fuel {
+            width: 80px;
+            height: 20px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 12px;
+        }
+        
+        
+        #research {
+            width: 100px;
+            height: 20px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 12px;
+        }
+        
+        #resea {
+            width: 80px;
+            height: 20px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 12px;
+        }
+        
+ 
+        #first {
+            border-radius: 14px;
+            height: 15px;
+            width:40px;
+            font-size: 15px;
+            text-align: center;
+        }
+        
+        #second {
+            border-radius: 14px;
+            height: 15px;
+            width:40px;
+            font-size: 15px;
+            text-align: center;
+        }
+        
+        #third {
+            border-radius: 14px;
+            height: 15px;
+            font-size: 15px;
+            width:60px;
+            text-align: center;
+        }
+        
+        #fourth {
+            width: 80px;
+            height: 20px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 12px;
+        }
+
+
+    </style>
